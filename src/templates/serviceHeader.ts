@@ -11,7 +11,7 @@ export function serviceHeader(options: ISwaggerOptions, basePath: string) {
   return `/** Generate by swagger-axios-codegen */
   // tslint:disable
   /* eslint-disable */
-  import axiosStatic, { AxiosInstance } from 'axios';
+  import axiosStatic, { AxiosInstance, AxiosTransformer, CancelToken } from 'axios';
 
   const basePath = '${trimString(basePath, '/', 'right')}'
   ${classTransformerImport}
@@ -20,6 +20,9 @@ export function serviceHeader(options: ISwaggerOptions, basePath: string) {
     headers?: any;
     baseURL?: string;
     responseType?: string;
+    transformRequest?: AxiosTransformer | AxiosTransformer[];
+    transformResponse?: AxiosTransformer | AxiosTransformer[];
+    cancelToken?: CancelToken;
   }
 
   export interface IRequestConfig {
