@@ -189,7 +189,7 @@ function codegenAll(
     requestClasses.forEach(([className, requests]) => {
       let text = ''
       requests.forEach(req => {
-        const reqName = options.methodNameMode == 'operationId' ? req.operationId : req.name
+        const reqName = options.methodNameMode == 'operationId' ? req.operationId.replace('#', '_') : req.name
         text += requestTemplate(reqName, req.requestSchema, options)
       })
       text = serviceTemplate(className + options.serviceNameSuffix, text)
